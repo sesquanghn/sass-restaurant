@@ -1,0 +1,77 @@
+api:
+  errors:
+    codes:
+      activerecord:
+        default: 1000
+        confirmation: 1001
+        accepted: 1002
+        blank: 1003
+        present: 1004
+        too_short: 1005
+        too_long: 1006
+        wrong_length: 1007
+        taken: 1008
+        invalid: 1009
+        inclusion: 1010
+        exclusion: 1011
+        required: 1012
+        not_a_number: 1013
+        greater_than: 1014
+        greater_than_or_equal_to: 1015
+        equal_to: 1016
+        less_than: 1017
+        less_than_or_equal_to: 1018
+        other_than: 1019
+        not_an_integer: 1020
+        odd: 1021
+        even: 1022
+        too_long:
+          one: 1023
+          other: 1024
+        too_short:
+          one: 1025
+          other: 1026
+        wrong_length:
+          one: 1027
+          other: 1028
+        record_not_found: 1099
+        invalid_foreign_key: 1100
+      devise:
+        sessions:
+          bad_credentials: 2000
+          not_supported: 2001
+          user_not_found: 2002
+          not_confirmed: 2003
+          not_sms_confirmed: 2004
+          inactive: 2005
+        token_validations:
+          invalid: 2100
+        passwords:
+          missing_email: 2200
+          missing_redirect_url: 2201
+          not_allowed_redirect_url: 2202
+          user_not_found: 2203
+          password_not_required: 2204
+          missing_passwords: 2205
+        confirmations:
+          user_not_found: 2300
+          missing_email: 2301
+        failure:
+          already_authenticated: 2400
+          inactive: 2401
+          invalid: 2402
+          locked: 2403
+          last_attempt: 2404
+          not_found_in_database: 2405
+          timeout: 2406
+          unauthenticated: 2407
+          unconfirmed: 2408
+        invitations:
+          invalid_token: 2500
+          unauthenticated: 2501
+      generic:
+        not_found: 3000
+        access_denied: 3001
+        invalid_parameters: 3002
+        request_timeout: 3003
+        other_error: 3099

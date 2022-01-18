@@ -1,0 +1,40 @@
+version: '3.2'
+
+volumes:
+  active_admin:
+    driver: local
+
+services:
+  db:
+    image: postgres:11
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: rails
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5439:5432'
+    volumes:
+      - active_admin:/var/lib/postgresql/data/pgdata
+
+  tenant:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '3009:3000'
+    environment:
+      RAILS_ENV: development
+      RACK_ENV: development
+      POSTGRES_USER: rails
+      POSTGRES_PASSWORD: password
+      WEBPACKER_DEV_SERVER_HOST: webpack
+      API_SUBDOMAIN: api
+      ACTIVE_ADMIN_SUBDOMAIN: backend
+    stdin_open: true
+    tty: true
+    entrypoint: ./docker-entrypoint.sh
+    volumes:
+      - ./:/usr/src/app
+    depends_on:
+      - db
+  
