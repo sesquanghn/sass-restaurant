@@ -1,24 +1,14 @@
-# README
+# sass-restaurant
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* docker setup:
+  * `docker-compose up -d`
 
-Things you may want to cover:
+```bash
+# setup example
+$ git clone git@github.com:any-thinhdh/sass-restaurant.git
+$ cd sass-restaurant
+$ docker-compose up -d
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Pages
+Base URL: http://api.lvh.me:3009
