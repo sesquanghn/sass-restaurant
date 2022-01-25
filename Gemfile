@@ -38,10 +38,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry', '~> 0.13.1'
   gem 'rubocop-rspec', require: false
+  gem 'factory_bot_rails'
 end
 
 group :test do
-  gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'rspec-json_expectations'
   gem 'database_cleaner-active_record'
