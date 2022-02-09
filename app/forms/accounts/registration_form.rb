@@ -21,12 +21,14 @@ module Accounts
     def submit
       return unless validate!
 
-      account = create_account
-      Apartment::Tenant.create(subdomain)
-      Apartment::Tenant.switch!(subdomain)
-      owner = create_owner
-      attach_owner_to_account(owner, account)
-      account
+      ActiveRecord::Base.transaction do
+        account = create_account
+        Apartment::Tenant.create(subdomain)
+        Apartment::Tenant.switch!(subdomain)
+        owner = create_owner
+        attach_owner_to_account(owner, account)
+        account
+      end
     end
 
     def persisted?

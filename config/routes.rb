@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       end
 
       resources :accounts, only: :create
-      resources :tests, only: :index
+      resources :customers, defaults: { format: :json }
     end
   end
 end
