@@ -1,5 +1,7 @@
-class V1::CustomersController < V1::ApiController
+class V1::CustomersController < V1::AuthController
   include Pagy::Backend
+
+  before_action :authenticate_v1_user!
 
   def index
     pagy, @customers = pagy(Customer.all)
