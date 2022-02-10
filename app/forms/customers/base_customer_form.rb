@@ -16,7 +16,7 @@ module Customers
     attribute :address, :string
     attribute :building_address, :string
     attribute :date_of_birth, :date
-    attribute :is_male, :boolean
+    attribute :gender, :string
     attribute :email, :string
     attribute :remarks, :string
     attribute :company_name, :string

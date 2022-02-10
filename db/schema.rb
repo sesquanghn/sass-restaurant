@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_024813) do
     t.string "address"
     t.string "building_address"
     t.date "date_of_birth"
-    t.boolean "is_male"
+    t.integer "gender", default: 0
     t.string "email"
     t.string "remarks"
     t.string "company_name"

@@ -33,7 +33,7 @@ class V1::CustomersController < V1::AuthController
   def customer_params
     params.require(:customer).permit(:name, :phone, :number_of_visits, :last_visited_date, :customer_type,
                                      :name_kana, :postcode, :prefecture, :municipality, :address, :building_address,
-                                     :date_of_birth, :is_male, :email, :remarks, :company_name)
+                                     :date_of_birth, :gender, :email, :remarks, :company_name)
   end
 
   def update_customer_params

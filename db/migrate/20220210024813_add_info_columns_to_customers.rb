@@ -7,7 +7,7 @@ class AddInfoColumnsToCustomers < ActiveRecord::Migration[6.1]
     add_column :customers, :address, :string
     add_column :customers, :building_address, :string
     add_column :customers, :date_of_birth, :date
-    add_column :customers, :is_male, :boolean
+    add_column :customers, :gender, :integer, default: 0
     add_column :customers, :email, :string
     add_column :customers, :remarks, :string
     add_column :customers, :company_name, :string

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :customer do
-    name { "MyName" }
-    phone { "MyPhone" }
-    name_kana { "MyNameKana" }
+    name { Faker::Name.name }
+    phone { Faker::PhoneNumber.cell_phone }
+    name_kana { 'マリア' }
   end
 end

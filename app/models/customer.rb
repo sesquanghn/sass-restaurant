@@ -10,7 +10,7 @@
 #  date_of_birth     :date
 #  discarded_at      :datetime
 #  email             :string
-#  is_male           :boolean
+#  gender            :integer          default("male")
 #  last_visited_date :datetime
 #  municipality      :string
 #  name              :string
@@ -31,4 +31,5 @@ class Customer < ApplicationRecord
   include Discardable
 
   enum customer_type: [:individual, :grouped]
+  enum gender: [:male, :female]
 end
