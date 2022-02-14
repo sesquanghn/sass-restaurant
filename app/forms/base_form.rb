@@ -1,4 +1,6 @@
 class BaseForm
+  EMAIL_REGEX = /\A(^$|^.*@.*\..*\w$)\z/i
+
   def submit
     raise NotImplementedError
   end

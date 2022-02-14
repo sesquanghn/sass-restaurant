@@ -33,6 +33,7 @@ gem 'ros-apartment', require: 'apartment'
 gem 'rack-cors'
 gem 'pagy', '~> 5.10'
 gem 'discard', '~> 1.2'
+gem 'moji'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

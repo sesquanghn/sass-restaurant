@@ -1,5 +1,5 @@
 module Accounts
-  class RegistrationForm
+  class RegistrationForm < BaseForm
     include ActiveModel::Model
     include ActiveModel::Attributes
 
@@ -11,7 +11,7 @@ module Accounts
 
     validates :company_name, presence: true
     validates :owner_name, presence: true
-    validates :owner_email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+    validates :owner_email, presence: true, format: { with: EMAIL_REGEX }
     validates :owner_password, presence: true
     validates :owner_password_confirmation, presence: true
 
@@ -29,14 +29,6 @@ module Accounts
         attach_owner_to_account(owner, account)
         account
       end
-    end
-
-    def persisted?
-      false
-    end
-
-    def save!
-      false
     end
 
     private

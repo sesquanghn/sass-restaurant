@@ -181,6 +181,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.7.1)
     minitest (5.15.0)
+    moji (1.6)
     msgpack (1.4.2)
     nio4r (2.5.8)
     nokogiri (1.13.1)
@@ -328,6 +329,7 @@ DEPENDENCIES
   faker!
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  moji
   pagy (~> 5.10)
   pg (~> 1.1)
   pry (~> 0.13.1)
