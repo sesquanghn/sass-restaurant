@@ -22,5 +22,13 @@ module Customers
     attribute :company_name, :string
 
     validates :name, :phone, :name_kana, presence: true
+    validates :email, format: { with: EMAIL_REGEX }
+    validate :name_kana_character
+
+    private
+
+    def name_kana_character
+      errors.add(:name_kana, :invalid) if name_kana.present? && !Moji.type?(name_kana, Moji::KATA)
+    end
   end
 end
