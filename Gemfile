@@ -14,7 +14,7 @@ gem 'devise_token_auth'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.6'
 gem 'jbuilder', '~> 2.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
