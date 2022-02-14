@@ -43,11 +43,11 @@ class V1::Users::Auth::SessionsController < DeviseTokenAuth::SessionsController
   private
 
   def after_login
-    response.headers['X-Restaurant-Tenant-Id'] = medical_tenant_id
+    response.headers['X-Restaurant-Tenant-Id'] = restaurant_tenant_id
   end
 
-  def medical_tenant_id
-    request.headers['X-Restaurant-Tenant-Id'].presence || request.headers['X-Restaurant-Tenant-Id']
+  def restaurant_tenant_id
+    request.headers['X-Restaurant-Tenant-Id'].presence
   end
 
   def render_create_success
