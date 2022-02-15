@@ -4,7 +4,7 @@ class V1::CustomersController < V1::AuthController
   before_action :authenticate_v1_user!
 
   def index
-    pagy, @customers = pagy(Customer.all)
+    pagy, @customers = pagy(Customer.all, items: params[:limit])
     @paging = pagy_metadata(pagy)
   end
 
