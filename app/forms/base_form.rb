@@ -1,5 +1,6 @@
 class BaseForm
   EMAIL_REGEX = /\A(^$|^.*@.*\..*\w$)\z/i
+  NUMBER_OPTION_REGEX = /\A(^$|\d+)\z/i
 
   def submit
     raise NotImplementedError
