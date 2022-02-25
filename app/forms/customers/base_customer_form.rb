@@ -23,6 +23,7 @@ module Customers
 
     validates :name, :phone, :name_kana, presence: true
     validates :email, format: { with: EMAIL_REGEX }
+    validates :phone, :postcode, format: { with: NUMBER_OPTION_REGEX }
     validate :name_kana_character
 
     private

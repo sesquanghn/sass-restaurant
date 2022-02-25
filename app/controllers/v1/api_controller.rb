@@ -4,7 +4,7 @@ class V1::ApiController < ActionController::API
   layout 'v1/application'
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :remove_session
+  before_action :remove_session, :snakeize_params
 
   protected
 
@@ -38,5 +38,9 @@ class V1::ApiController < ActionController::API
     subdomain = request.headers['X-Restaurant-Tenant-Id']
     subdomain = request.headers['X-Company-Name'] if request.headers['X-Company-Name'].present?
     @current_account ||= AccountRepository.find_by(subdomain: subdomain)
+  end
+
+  def snakeize_params
+    params.deep_snakeize!
   end
 end
