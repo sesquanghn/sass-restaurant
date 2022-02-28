@@ -4,7 +4,8 @@ class V1::CustomersController < V1::AuthController
   before_action :authenticate_v1_user!
 
   def index
-    pagy, @customers = pagy(Customer.all, items: params[:limit])
+    result = CustomerSearch.execute(search_params)
+    pagy, @customers = pagy(result, items: params[:limit])
     @paging = pagy_metadata(pagy)
   end
 
@@ -34,6 +35,10 @@ class V1::CustomersController < V1::AuthController
     params.require(:customer).permit(:name, :phone, :number_of_visits, :last_visited_date, :customer_type,
                                      :name_kana, :postcode, :prefecture, :municipality, :address, :building_address,
                                      :date_of_birth, :gender, :email, :remarks, :company_name)
+  end
+
+  def search_params
+    params.permit(:customer_number, :name, :phone, :customer_type)
   end
 
   def update_customer_params
