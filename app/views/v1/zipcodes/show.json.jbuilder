@@ -1,0 +1,10 @@
+json.prefecture @address.prefecture
+json.prefecture_kana @address.prefecture_kana
+json.prefecture_code @address.prefecture_code
+json.city @address.city
+json.city_kana @address.city_kana
+json.town @address.town
+json.town_kana @address.town_kana
+json.street @address.street
+json.office_name @address.office_name
+json.office_name_kana @address.office_name_kana

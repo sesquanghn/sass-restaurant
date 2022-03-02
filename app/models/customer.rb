@@ -32,9 +32,4 @@ class Customer < ApplicationRecord
 
   enum customer_type: [:individual, :grouped]
   enum gender: [:male, :female]
-
-  scope :by_id, ->(id) { where(id: id) }
-  scope :by_phone, ->(phone) { where(phone: phone) }
-  scope :by_name_start_with, ->(name) { where("customers.name LIKE ?", "#{name}%") }
-  scope :by_customer_type, ->(customer_type) { where(customer_type: customer_type) }
 end
