@@ -4,13 +4,7 @@ class V1::CustomersController < V1::AuthController
   before_action :authenticate_v1_user!
 
   def index
-    result = CustomerQueries.new(Customer.all)
-                            .by_id(search_params[:customer_number])
-                            .by_name_start_with(search_params[:name])
-                            .by_phone(search_params[:phone])
-                            .by_customer_type(search_params[:customer_type])
-                            .result
-
+    result = CustomerGetter.execute(search_params)
     pagy, @customers = pagy(result, items: params[:limit])
     @paging = pagy_metadata(pagy)
   end
