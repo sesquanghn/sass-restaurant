@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
       resources :accounts, only: :create
       resources :customers, defaults: { format: :json }
+      resources :zipcodes, only: :show
+      resources :prefectures, only: :index
     end
   end
 end
