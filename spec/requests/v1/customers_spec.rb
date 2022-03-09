@@ -21,6 +21,20 @@ RSpec.describe V1::CustomersController, type: :request do
       expect(response).to have_http_status(:ok)
       expect(response.parsed_body["data"]["customers"].size).to eq(1)
     end
+
+    let(:search_params) do
+      {
+        phone: customer_params[:phone],
+        name: customer_params[:name]
+      }
+    end
+
+    it 'returns customer by search params' do
+      get v1_customers_path, headers: @auth_token, params: search_params
+
+      expect(response).to have_http_status(:ok)
+      expect(response.parsed_body["data"]["customers"].size).to eq(1)
+    end
   end
 
   describe 'GET /v1/customers/:id' do
