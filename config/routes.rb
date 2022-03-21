@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   constraints(SubdomainConstraint) do
-    namespace :v1 do
+    namespace :v1, defaults: { format: :json } do
       namespace :users do
         mount_devise_token_auth_for 'User', at: 'auth', skip: [:invitations], controllers: {
           sessions:           'v1/users/auth/sessions'
@@ -15,9 +15,10 @@ Rails.application.routes.draw do
       end
 
       resources :accounts, only: :create
-      resources :customers, defaults: { format: :json }
-      resources :zipcodes, defaults: { format: :json }, only: :show
-      resources :prefectures, defaults: { format: :json }, only: :index
+      resources :customers
+      resources :zipcodes, only: :show
+      resources :prefectures, only: :index
+      resources :floors
     end
   end
 end
