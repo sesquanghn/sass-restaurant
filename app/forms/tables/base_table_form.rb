@@ -12,6 +12,6 @@ module Tables
     attribute :state, :integer
     attribute :floor_id, :integer
 
-    validates :name, :floor_id, presence: true
+    validates :floor_id, presence: true
   end
 end
