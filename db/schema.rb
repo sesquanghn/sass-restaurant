@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_024813) do
+ActiveRecord::Schema.define(version: 2022_03_17_040220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,23 @@ ActiveRecord::Schema.define(version: 2022_02_10_024813) do
     t.index ["discarded_at"], name: "index_customers_on_discarded_at"
   end
 
+  create_table "floors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.string "name"
+    t.integer "customer_capacity"
+    t.json "properties"
+    t.integer "state", default: 0
+    t.bigint "floor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["floor_id"], name: "index_tables_on_floor_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -71,4 +88,5 @@ ActiveRecord::Schema.define(version: 2022_02_10_024813) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "tables", "floors"
 end
