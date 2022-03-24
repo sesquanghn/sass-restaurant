@@ -29,6 +29,7 @@ class V1::FloorsController < V1::AuthController
 
   def floor_params
     params.require(:floor)
-          .permit(:id, :name, table_attributes: [:id, :name, :customer_capacity, :properties, :state, :floor_id, :_destroy])
+          .permit(:name, table_attributes: [:id, :name, :customer_capacity, :properties, :state, :floor_id, :_destroy])
+          .merge(id: params[:id])
   end
 end
