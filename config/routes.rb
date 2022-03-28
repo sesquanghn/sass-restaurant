@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :zipcodes, only: :show
       resources :prefectures, only: :index
       resources :floors
+      resources :reservations
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_17_040220) do
+ActiveRecord::Schema.define(version: 2022_03_28_020029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,23 @@ ActiveRecord::Schema.define(version: 2022_03_17_040220) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "voucher_code"
+    t.integer "number_of_guests"
+    t.integer "reservation_state"
+    t.integer "user_id"
+    t.datetime "discarded_at"
+    t.bigint "customer_id", null: false
+    t.bigint "table_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_reservations_on_customer_id"
+    t.index ["discarded_at"], name: "index_reservations_on_discarded_at"
+    t.index ["table_id"], name: "index_reservations_on_table_id"
+  end
+
   create_table "tables", force: :cascade do |t|
     t.string "name"
     t.integer "customer_capacity"
@@ -88,5 +105,7 @@ ActiveRecord::Schema.define(version: 2022_03_17_040220) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "reservations", "customers"
+  add_foreign_key "reservations", "tables"
   add_foreign_key "tables", "floors"
 end
