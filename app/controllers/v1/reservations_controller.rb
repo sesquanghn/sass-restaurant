@@ -2,7 +2,9 @@ class V1::ReservationsController < V1::AuthController
   before_action :authenticate_v1_user!
 
   def index
-    @reservations = Reservation.all
+    @reservations = ReservationQueries.new(Reservation.includes(:customer, :table))
+                                      .by_reserved_at(params[:reserved_at])
+                                      .result
   end
 
   def create
