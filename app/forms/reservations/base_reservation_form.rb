@@ -14,5 +14,18 @@ module Reservations
     attribute :table_id, :integer
 
     validates :start_time, :end_time, :customer_id, :table_id, presence: true
+    validate :reserve_time_correct
+
+    private
+
+    def reserve_time_correct
+      return if start_time < end_time && !reserve_time_overlap?
+
+      errors.add(:base, 'Reservation time is invalid')
+    end
+
+    def reserve_time_overlap?
+      Reservation.exists?(['(start_time, end_time) OVERLAPS (?, ?) AND table_id = ?', start_time, end_time, table_id])
+    end
   end
 end

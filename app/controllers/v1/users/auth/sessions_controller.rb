@@ -52,8 +52,10 @@ class V1::Users::Auth::SessionsController < DeviseTokenAuth::SessionsController
 
   def render_create_success
     data = @resource.token_validation_response
+    account_id = Account.find_by(id: @resource.id)&.id
+    resource_data_res = resource_data(resource_json: data).merge(account_id: account_id)
     render json: {
-      data: resource_data(resource_json: data),
+      data: resource_data_res,
       success: true,
       message: 'Logged in successfully',
       errors: '',

@@ -8,6 +8,10 @@ class V1::AccountsController < V1::ApiController
     render_account_create_success(account)
   end
 
+  def show
+    @account = Account.find(params[:id])
+  end
+
   private
 
   def account_params
