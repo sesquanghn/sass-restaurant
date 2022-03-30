@@ -14,12 +14,14 @@ Rails.application.routes.draw do
         }
       end
 
-      resources :accounts, only: :create
+      resources :accounts, only: [:create, :show]
       resources :customers
       resources :zipcodes, only: :show
       resources :prefectures, only: :index
       resources :floors
       resources :reservations
+      resources :restaurant_settings, except: [:index, :destroy]
+      resources :tables, only: :index
     end
   end
 end
