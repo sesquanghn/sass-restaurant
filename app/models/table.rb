@@ -4,6 +4,7 @@
 #
 #  id                :bigint           not null, primary key
 #  customer_capacity :integer
+#  discarded_at      :datetime
 #  name              :string
 #  properties        :json
 #  state             :integer          default("available")
@@ -20,6 +21,8 @@
 #  fk_rails_...  (floor_id => floors.id)
 #
 class Table < ApplicationRecord
+  include Discardable
+
   belongs_to :floor
 
   enum state: [:available, :maintaince]
