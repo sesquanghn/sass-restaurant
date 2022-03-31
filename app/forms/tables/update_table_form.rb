@@ -2,7 +2,7 @@ module Tables
   class UpdateTableForm < BaseTableForm
     def submit
       table = Table.find(id)
-      return table.destroy! if _destroy
+      return table.discard if _destroy
 
       validate!
       table.update!(attributes)
